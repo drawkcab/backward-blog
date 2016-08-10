@@ -17,4 +17,4 @@ use Rack::TryStatic,
 
 # otherwise 404 NotFound
 notFoundPage = File.open('_site/index.html').read
-run lambda { |_| [200, {'Content-Type' => 'text/html'}, [notFoundPage]]
+run lambda { |_| [200, {'Content-Type' => 'text/html'}, [notFoundPage]]}
