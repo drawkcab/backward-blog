@@ -5,9 +5,113 @@
     <description>My backward approach to tech and code.</description>
     <link>https://nameless-crag-97543.herokuapp.com/</link>
     <atom:link href="https://nameless-crag-97543.herokuapp.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 10 Aug 2016 23:08:25 -0400</pubDate>
-    <lastBuildDate>Wed, 10 Aug 2016 23:08:25 -0400</lastBuildDate>
+    <pubDate>Thu, 11 Aug 2016 02:15:24 -0400</pubDate>
+    <lastBuildDate>Thu, 11 Aug 2016 02:15:24 -0400</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Jekyll init Heroku</title>
+        <description>&lt;h2 id=&quot;who-what-why-how&quot;&gt;Who What Why How&lt;/h2&gt;
+
+&lt;p&gt;Like me you recently wanted to start blogging and stumbled onto Jekyll, set up you blog (or just have the default blog post) and now you need to serve this bad boy up to show the world. Then your dreams came to a screeching halt when Heroku dropped this wisdom on you:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;remote:  !     Failed to generate site with jekyll.
+remote:  !
+remote:  !     Push rejected, failed to compile Ruby app.
+remote:  !
+remote:  !     Push failed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Jekyll has great documentation for deploying to GitHub pages but not so much for everywhere else. No need to fear we can slay this beast without much hassle.&lt;/p&gt;
+
+&lt;h2 id=&quot;into-jekyll-to-save-your-hyde&quot;&gt;Into Jekyll to save your Hyde.&lt;/h2&gt;
+
+&lt;p&gt;Before we get started make sure you have a current version of ruby installed and bundler installed. If not take a couple of minutes and get both of those set up. For this to work you need both of these set up.&lt;/p&gt;
+
+&lt;h4 id=&quot;gemfile&quot;&gt;Gemfile&lt;/h4&gt;
+
+&lt;p&gt;First in the main directory lets make a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; . This file will be used by bundler to install all of the necessary ruby gems. Add all of this to the file.
+```
+source ‘https://rubygems.org’&lt;/p&gt;
+
+&lt;p&gt;ruby ‘2.2.3’&lt;/p&gt;
+
+&lt;p&gt;gem ‘rack-contrib’
+gem ‘puma’
+gem ‘kramdown’
+gem ‘rouge’
+gem ‘jekyll’
+```&lt;/p&gt;
+
+&lt;p&gt;Once you have this in your terminal type &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. Calling this will go and the latest versions of the gems and install them to be used for your jekyll app. This will also make a &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt;. DO NOT ALTER THIS FILE. This connects all of the third party gems with your app and makes them one. It has the specific details on which versions you bundles with your app.&lt;/p&gt;
+
+&lt;h4 id=&quot;procfile&quot;&gt;Procfile&lt;/h4&gt;
+
+&lt;p&gt;Next up we will create a &lt;code class=&quot;highlighter-rouge&quot;&gt;Procfile&lt;/code&gt; which is used by Heroku to serve up your site.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+&lt;/code&gt;
+You will notice we called puma in there and in the gem file. &lt;code class=&quot;highlighter-rouge&quot;&gt;Puma&lt;/code&gt; will actually be serving up your static pages and is a very popular gem used to serve files on rack server environments like Heroku. Don’t worry about the other variables these are standard for hosting on Heroku. (&lt;a href=&quot;https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server&quot;&gt;Here is Heroku’s documentation for Puma&lt;/a&gt; because you shouldn’t trust strangers on the internet.)&lt;/p&gt;
+
+&lt;h4 id=&quot;configru&quot;&gt;config.ru&lt;/h4&gt;
+
+&lt;p&gt;Now that we have &lt;code class=&quot;highlighter-rouge&quot;&gt;puma&lt;/code&gt; integrated with our app and have a &lt;code class=&quot;highlighter-rouge&quot;&gt;Procfile&lt;/code&gt; to tell Heroku what to do we need to tell &lt;code class=&quot;highlighter-rouge&quot;&gt;puma&lt;/code&gt; a little more about what to serve up and how to serve up our files. If you looked at Heroku’s documentation linked a little bit ago you would have seen the next file you need is &lt;code class=&quot;highlighter-rouge&quot;&gt;config.ru&lt;/code&gt;. Add this file to your main directory and lets dive into this one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-ru&quot;&gt;require 'rack'
+require 'rack/contrib/try_static'
+
+# enable compression
+use Rack::Deflater
+
+# static configuration (file path matches request path)
+use Rack::TryStatic,
+      :root =&amp;gt; &quot;_site&quot;,  # static files root dir
+      :urls =&amp;gt; %w[/],    # match all requests
+      :try =&amp;gt; ['.html', 'index.html', '/index.html'], # try these postfixes sequentially
+      :gzip =&amp;gt; true,     # enable compressed files
+      :header_rules =&amp;gt; [
+        [:all, {'Cache-Control' =&amp;gt; 'public, max-age=86400'}],
+        [['css', 'js'], {'Cache-Control' =&amp;gt; 'public, max-age=604800'}]
+      ]
+
+# otherwise 404 NotFound
+notFoundPage = File.open('_site/index.html').read
+run lambda { |_| [200, {'Content-Type' =&amp;gt; 'text/html'}, [notFoundPage]]}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is a lot to absorb all at once so lets break this up a little bit.&lt;/p&gt;
+
+&lt;p&gt;First we require two rack components and use &lt;code class=&quot;highlighter-rouge&quot;&gt;Rack::Deflater&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;Rack::Deflater&lt;/code&gt; is used to compress your app so that you can server it up quickly and saving storage space on the server.&lt;/p&gt;
+
+&lt;p&gt;Next we get into the deep stuff. We call &lt;code class=&quot;highlighter-rouge&quot;&gt;Rack::TryStatic&lt;/code&gt; to host our static pages and have a lot of parameters.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:root&lt;/code&gt; Set the folder that has all of our static pages.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:urls&lt;/code&gt; Matches the requests coming to your site.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:try&lt;/code&gt; This will try all the listed values in order until it gets the right one.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:gzip&lt;/code&gt; Used by &lt;code class=&quot;highlighter-rouge&quot;&gt;Rack::Deflater&lt;/code&gt; to compress the app.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;:header_rules&lt;/code&gt; Manage our cache and tell &lt;code class=&quot;highlighter-rouge&quot;&gt;puma&lt;/code&gt; how long to hold out compressed files before they have to be regenerated by the server.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last bit of code is what happens when there is an incorrect url entered a.k.a 404 NotFound.&lt;/p&gt;
+
+&lt;h4 id=&quot;push&quot;&gt;Push!&lt;/h4&gt;
+
+&lt;p&gt;If you made it this far pat yourself on the back you are almost all set! If your git is not set up &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;git add .&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &quot;Just Heroku blog stuff&quot;&lt;/code&gt;. If you skipped bundling your gems earlier do it now &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. If you have a &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; make sure that your &lt;code class=&quot;highlighter-rouge&quot;&gt;_pages&lt;/code&gt; folder is not on it! Github Pages has you ignore the file but we are actually serving the static pages.&lt;/p&gt;
+
+&lt;p&gt;The time has come to get this running on heroku. &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku create&lt;/code&gt; in your terminal then &lt;code class=&quot;highlighter-rouge&quot;&gt;git push heroku master&lt;/code&gt;. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku open&lt;/code&gt;. There it is! Your new blog! :fire:&lt;/p&gt;
+</description>
+        <pubDate>Thu, 11 Aug 2016 00:00:00 -0400</pubDate>
+        <link>https://nameless-crag-97543.herokuapp.com/articles/2016-08/jekyll-init</link>
+        <guid isPermaLink="true">https://nameless-crag-97543.herokuapp.com/articles/2016-08/jekyll-init</guid>
+        
+        
+        <category>tutorial</category>
+        
+        <category>jekyll</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
