@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Jekyll init Heroku
-excerpt: "Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more."
+title: Jekyll running on Heroku
+excerpt: "Saving your Hyde by getting Jekyll running on Heroku"
 categories: [tutorial, jekyll]
 comments: true
 image:
@@ -97,4 +97,4 @@ The last bit of code is what happens when there is an incorrect url entered a.k.
 
 If you made it this far pat yourself on the back you are almost all set! If your git is not set up `git init` , `git add .`, `git commit -m "Just Heroku blog stuff"`. If you skipped bundling your gems earlier do it now `bundle install`. If you have a `.gitignore` make sure that your `_pages` folder is not on it! Github Pages has you ignore the file but we are actually serving the static pages.
 
-The time has come to get this running on heroku. `heroku create` in your terminal then `git push heroku master`. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then `heroku open`. There it is! Your new blog! :fire: 
+The time has come to get this running on heroku. `heroku create` in your terminal then `git push heroku master`. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then `heroku open`. There it is! Your new blog!

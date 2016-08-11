@@ -5,12 +5,12 @@
     <description>My backward approach to tech and code.</description>
     <link>https://nameless-crag-97543.herokuapp.com/</link>
     <atom:link href="https://nameless-crag-97543.herokuapp.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 11 Aug 2016 02:19:28 -0400</pubDate>
-    <lastBuildDate>Thu, 11 Aug 2016 02:19:28 -0400</lastBuildDate>
+    <pubDate>Thu, 11 Aug 2016 02:31:58 -0400</pubDate>
+    <lastBuildDate>Thu, 11 Aug 2016 02:31:58 -0400</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Jekyll init Heroku</title>
+        <title>Jekyll running on Heroku</title>
         <description>&lt;h2 id=&quot;who-what-why-how&quot;&gt;Who What Why How&lt;/h2&gt;
 
 &lt;p&gt;Like me you recently wanted to start blogging and stumbled onto Jekyll, set up you blog (or just have the default blog post) and now you need to serve this bad boy up to show the world. Then your dreams came to a screeching halt when Heroku dropped this wisdom on you:&lt;/p&gt;
@@ -100,7 +100,7 @@ run lambda { |_| [200, {'Content-Type' =&amp;gt; 'text/html'}, [notFoundPage]]}
 
 &lt;p&gt;If you made it this far pat yourself on the back you are almost all set! If your git is not set up &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;git add .&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;git commit -m &quot;Just Heroku blog stuff&quot;&lt;/code&gt;. If you skipped bundling your gems earlier do it now &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;. If you have a &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; make sure that your &lt;code class=&quot;highlighter-rouge&quot;&gt;_pages&lt;/code&gt; folder is not on it! Github Pages has you ignore the file but we are actually serving the static pages.&lt;/p&gt;
 
-&lt;p&gt;The time has come to get this running on heroku. &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku create&lt;/code&gt; in your terminal then &lt;code class=&quot;highlighter-rouge&quot;&gt;git push heroku master&lt;/code&gt;. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku open&lt;/code&gt;. There it is! Your new blog! :fire:&lt;/p&gt;
+&lt;p&gt;The time has come to get this running on heroku. &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku create&lt;/code&gt; in your terminal then &lt;code class=&quot;highlighter-rouge&quot;&gt;git push heroku master&lt;/code&gt;. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku open&lt;/code&gt;. There it is! Your new blog!&lt;/p&gt;
 </description>
         <pubDate>Thu, 11 Aug 2016 00:00:00 -0400</pubDate>
         <link>https://nameless-crag-97543.herokuapp.com/articles/2016-08/jekyll-init</link>
