@@ -773,10 +773,10 @@ footer {
   background-color: #42b983; }
 
 .secondary-text-color {
-  color: #8d7edc; }
+  color: #59C4C5; }
 
 .secondary-bg-color {
-  background-color: #8d7edc; }
+  background-color: #59C4C5; }
 
 .success-text-color {
   color: #65e892; }
@@ -1046,7 +1046,7 @@ blockquote {
   position: relative;
   padding-left: 20px;
   font-style: italic;
-  border-left: 5px solid #8d7edc; }
+  border-left: 5px solid #59C4C5; }
 
 a {
   text-decoration: none;
@@ -1442,7 +1442,7 @@ pre code {
 
 /* LAYOUT CSS */
 .cover {
-  background-color: #f5f5f5;
+  background-color: #FBE2B4;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -1469,12 +1469,12 @@ pre code {
     float: none; }
   .cover-card .author_name {
     display: block;
-    color: #F36170;
+    color: #FF4C65;
     font-size: 1.75em;
     text-transform: lowercase; }
   .cover-card .author_job {
     display: block;
-    color: #8d7edc;
+    color: #59C4C5;
     font-size: 0.8em;
     font-weight: 700;
     text-transform: uppercase;
@@ -1498,9 +1498,9 @@ pre code {
       display: inline-block;
       margin-left: 1em; }
       .social-links ul li a.social-link-item {
-        color: #8d7edc; }
+        color: #59C4C5; }
         .social-links ul li a.social-link-item:hover, .social-links ul li a.social-link-item:focus {
-          color: #bfb6eb; }
+          color: #8ed7d7; }
 
 .nav-list {
   margin: 0;
@@ -1514,9 +1514,9 @@ pre code {
       margin-top: 1em;
       text-transform: lowercase;
       font-size: 85%;
-      color: #8d7edc; }
+      color: #59C4C5; }
       .nav-list .nav-item a:hover, .nav-list .nav-item a:focus {
-        color: #bfb6eb; }
+        color: #8ed7d7; }
 
 ul.tag-cloud {
   padding: 2em 0 3em;
@@ -1564,7 +1564,7 @@ ul.tag-cloud {
     left: -2px;
     height: 100%;
     width: 4px;
-    background: #f5f5f5; }
+    background: #FBE2B4; }
   .archive #timeline:after {
     content: "";
     display: table;
@@ -1639,7 +1639,7 @@ section.post {
   font-size: 13px;
   font-weight: bold; }
   .post-meta .post-date {
-    color: #8d7edc; }
+    color: #59C4C5; }
   .post-meta .post-author {
     text-transform: uppercase;
     color: #F5A623; }
