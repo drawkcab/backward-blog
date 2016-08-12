@@ -1442,13 +1442,14 @@ pre code {
 
 /* LAYOUT CSS */
 .cover {
-  background-color: #FBE2B4;
+  background-color: #FCECCC;
   position: fixed;
   text-align: center;
   width: 100%;
   min-height: 400px;
   padding: 30px 15px 20px;
-  z-index: 1; }
+  z-index: 1;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16), 0 4px 20px 0 rgba(0, 0, 0, 0.12); }
   @media only screen and (min-width: 600px) {
     .cover {
       background-position: center;
@@ -1564,7 +1565,7 @@ ul.tag-cloud {
     left: -2px;
     height: 100%;
     width: 4px;
-    background: #FBE2B4; }
+    background: #FCECCC; }
   .archive #timeline:after {
     content: "";
     display: table;
