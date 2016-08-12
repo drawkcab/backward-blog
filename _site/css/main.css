@@ -1449,7 +1449,7 @@ pre code {
   min-height: 400px;
   padding: 30px 15px 20px;
   z-index: 1;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16), 0 4px 20px 0 rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.16), 0 8px 40px 0 rgba(0, 0, 0, 0.12); }
   @media only screen and (min-width: 600px) {
     .cover {
       background-position: center;
@@ -1469,15 +1469,18 @@ pre code {
     height: 100px;
     float: none; }
   .cover-card .author_name {
-    display: block;
     color: #FF4C65;
-    font-size: 1.75em;
+    display: block;
+    font-weight: 800;
+    text-shadow: 3px 3px 10px rgba(150, 150, 150, 0.65);
+    font-size: 2.75em;
     text-transform: lowercase; }
   .cover-card .author_job {
     display: block;
     color: #59C4C5;
     font-size: 0.8em;
     font-weight: 700;
+    text-shadow: 1px 1px 4px rgba(150, 150, 150, 0.65);
     text-transform: uppercase;
     margin: -5px auto 10px; }
   .cover-card .author_bio {
@@ -1490,14 +1493,16 @@ pre code {
       padding: 0 0px 80px; } }
 
 .social-links {
-  margin-top: 0.5em; }
+  margin-top: 0.5em;
+  text-shadow: 1px 1px 4px rgba(150, 150, 150, 0.65); }
   .social-links ul {
     margin: 0;
     padding: 0; }
     .social-links ul li {
       list-style: none;
       display: inline-block;
-      margin-left: 1em; }
+      margin-left: 1em;
+      text-shadow: 1px 1px 4px rgba(150, 150, 150, 0.45); }
       .social-links ul li a.social-link-item {
         color: #59C4C5; }
         .social-links ul li a.social-link-item:hover, .social-links ul li a.social-link-item:focus {
@@ -1510,6 +1515,7 @@ pre code {
   .nav-list .nav-item {
     display: inline-block;
     *display: inline;
+    text-shadow: 1px 1px 4px rgba(150, 150, 150, 0.45);
     zoom: 1; }
     .nav-list .nav-item a {
       margin-top: 1em;
