@@ -1442,7 +1442,8 @@ pre code {
 
 /* LAYOUT CSS */
 .cover {
-  background-color: #FCECCC;
+  background: radial-gradient(circle at 0% 50%, rgba(96, 16, 48, 0) 9px, #e4d3cd 10px, rgba(96, 16, 48, 0) 11px) 0px 10px, radial-gradient(at 100% 100%, rgba(96, 16, 48, 0) 9px, #e4d3cd 10px, rgba(96, 16, 48, 0) 11px), #FCECCC;
+  background-size: 20px 20px;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -1473,8 +1474,7 @@ pre code {
     display: block;
     font-weight: 800;
     text-shadow: 3px 3px 10px rgba(150, 150, 150, 0.65);
-    font-size: 2.75em;
-    text-transform: lowercase; }
+    font-size: 2.75em; }
   .cover-card .author_job {
     display: block;
     color: #59C4C5;
