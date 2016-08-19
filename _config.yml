@@ -36,7 +36,7 @@ kramdown:
 #
 owner:
   name: backward
-  avatar: #leonids-logo.png
+  avatar: backward-logo.png
   job: "A lover of tech"
   bio: "My backward approach to tech and code."
   email: MJRoche@mail.usf.edu
