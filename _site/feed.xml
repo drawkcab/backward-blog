@@ -5,15 +5,13 @@
     <description>My backward approach to tech and code.</description>
     <link>https://nameless-crag-97543.herokuapp.com/</link>
     <atom:link href="https://nameless-crag-97543.herokuapp.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 20 Aug 2016 01:35:14 -0400</pubDate>
-    <lastBuildDate>Sat, 20 Aug 2016 01:35:14 -0400</lastBuildDate>
+    <pubDate>Sat, 20 Aug 2016 01:46:17 -0400</pubDate>
+    <lastBuildDate>Sat, 20 Aug 2016 01:46:17 -0400</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>Hover Zoom on Images With CSS</title>
-        <description>&lt;h1 id=&quot;hover-zoom-on-images-with-css&quot;&gt;Hover Zoom on Images With CSS&lt;/h1&gt;
-
-&lt;p&gt;The goal of this post is to reproduce an effect I saw which on mouse over the image would zoom in using only CSS.&lt;/p&gt;
+        <description>&lt;p&gt;The goal of this post is to reproduce an effect I saw which on mouse over the image would zoom in using only CSS.&lt;/p&gt;
 
 &lt;h2 id=&quot;functionality&quot;&gt;Functionality&lt;/h2&gt;
 
@@ -121,7 +119,7 @@
         <guid isPermaLink="true">https://nameless-crag-97543.herokuapp.com/articles/2016-08/Hover-Zoom-on-Images-With-CSS</guid>
         
         
-        <category>code</category>
+        <category>CSS</category>
         
       </item>
     
