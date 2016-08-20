@@ -1,13 +1,11 @@
 ---
 layout: post
 title: Hover Zoom on Images With CSS
-excerpt: "Demo post displaying the various ways of highlighting code in Markdown."
-categories: [code]
+excerpt: "The goal of this post is to reproduce an effect I saw which on mouse over the image would zoom in using only CSS."
+categories: [CSS]
 modified: 2014-09-14
 comments: true
 ---
-
-# Hover Zoom on Images With CSS
 
 The goal of this post is to reproduce an effect I saw which on mouse over the image would zoom in using only CSS.
 
