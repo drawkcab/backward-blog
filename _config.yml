@@ -35,10 +35,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: backward
+  name: #Matthew Roche
   avatar: backward-logo.png
-  job: "A lover of tech"
-  bio: "My backward approach to tech and code."
+  job: #"A lover of tech"
+  bio: "A backward approach to tech and code."
   email: MJRoche@mail.usf.edu
   disqus-shortname: mjrocheblog
   twitter: 'MatthewJRoche'
