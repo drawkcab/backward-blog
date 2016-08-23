@@ -779,10 +779,10 @@ footer {
   background-color: #59C4C5; }
 
 .success-text-color {
-  color: #65e892; }
+  color: #42B983; }
 
 .success-bg-color {
-  background-color: #65e892; }
+  background-color: #42B983; }
 
 .danger-text-color {
   color: #f83e4b; }
@@ -1137,16 +1137,16 @@ p {
     border-color: #42b983; }
 
 .btn-success {
-  background-color: #65e892;
+  background-color: #42B983;
   color: #fff;
-  border-color: #65e892; }
+  border-color: #42B983; }
   .btn-success:visited {
     color: #fff;
-    border-color: #65e892; }
+    border-color: #42B983; }
   .btn-success:hover {
     background-color: #fff;
-    color: #65e892;
-    border-color: #65e892; }
+    color: #42B983;
+    border-color: #42B983; }
 
 .btn-warning {
   background-color: #F5A623;
