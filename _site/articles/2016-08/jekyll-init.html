@@ -153,13 +153,12 @@
 
 <p>Like me you recently wanted to start blogging and stumbled onto Jekyll, set up you blog (or just have the default blog post) and now you need to serve this bad boy up to show the world. Then your dreams came to a screeching halt when Heroku dropped this wisdom on you:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>remote:  !     Failed to generate site with jekyll.
+<pre><code>remote:  !     Failed to generate site with jekyll.
 remote:  !
 remote:  !     Push rejected, failed to compile Ruby app.
 remote:  !
 remote:  !     Push failed
 </code></pre>
-</div>
 
 <p>Jekyll has great documentation for deploying to GitHub pages but not so much for everywhere else. No need to fear we can slay this beast without much hassle.</p>
 
@@ -169,7 +168,7 @@ remote:  !     Push failed
 
 <h4 id="gemfile">Gemfile</h4>
 
-<p>First in the main directory lets make a file called <code class="highlighter-rouge">Gemfile</code> . This file will be used by bundler to install all of the necessary ruby gems. Add all of this to the file.
+<p>First in the main directory lets make a file called <code>Gemfile</code> . This file will be used by bundler to install all of the necessary ruby gems. Add all of this to the file.
 ```
 source ‘https://rubygems.org’</p>
 
@@ -182,19 +181,19 @@ gem ‘rouge’
 gem ‘jekyll’
 ```</p>
 
-<p>Once you have this in your terminal type <code class="highlighter-rouge">bundle install</code>. Calling this will go and the latest versions of the gems and install them to be used for your jekyll app. This will also make a <code class="highlighter-rouge">Gemfile.lock</code>. DO NOT ALTER THIS FILE. This connects all of the third party gems with your app and makes them one. It has the specific details on which versions you bundles with your app.</p>
+<p>Once you have this in your terminal type <code>bundle install</code>. Calling this will go and the latest versions of the gems and install them to be used for your jekyll app. This will also make a <code>Gemfile.lock</code>. DO NOT ALTER THIS FILE. This connects all of the third party gems with your app and makes them one. It has the specific details on which versions you bundles with your app.</p>
 
 <h4 id="procfile">Procfile</h4>
 
-<p>Next up we will create a <code class="highlighter-rouge">Procfile</code> which is used by Heroku to serve up your site.
-<code class="highlighter-rouge">
+<p>Next up we will create a <code>Procfile</code> which is used by Heroku to serve up your site.
+<code>
 web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
 </code>
-You will notice we called puma in there and in the gem file. <code class="highlighter-rouge">Puma</code> will actually be serving up your static pages and is a very popular gem used to serve files on rack server environments like Heroku. Don’t worry about the other variables these are standard for hosting on Heroku. (<a href="https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server">Here is Heroku’s documentation for Puma</a> because you shouldn’t trust strangers on the internet.)</p>
+You will notice we called puma in there and in the gem file. <code>Puma</code> will actually be serving up your static pages and is a very popular gem used to serve files on rack server environments like Heroku. Don’t worry about the other variables these are standard for hosting on Heroku. (<a href="https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server">Here is Heroku’s documentation for Puma</a> because you shouldn’t trust strangers on the internet.)</p>
 
 <h4 id="configru">config.ru</h4>
 
-<p>Now that we have <code class="highlighter-rouge">puma</code> integrated with our app and have a <code class="highlighter-rouge">Procfile</code> to tell Heroku what to do we need to tell <code class="highlighter-rouge">puma</code> a little more about what to serve up and how to serve up our files. If you looked at Heroku’s documentation linked a little bit ago you would have seen the next file you need is <code class="highlighter-rouge">config.ru</code>. Add this file to your main directory and lets dive into this one.</p>
+<p>Now that we have <code>puma</code> integrated with our app and have a <code>Procfile</code> to tell Heroku what to do we need to tell <code>puma</code> a little more about what to serve up and how to serve up our files. If you looked at Heroku’s documentation linked a little bit ago you would have seen the next file you need is <code>config.ru</code>. Add this file to your main directory and lets dive into this one.</p>
 
 <pre><code class="language-ru">require 'rack'
 require 'rack/contrib/try_static'
@@ -220,25 +219,25 @@ run lambda { |_| [200, {'Content-Type' =&gt; 'text/html'}, [notFoundPage]]}
 </code></pre>
 <p>This is a lot to absorb all at once so lets break this up a little bit.</p>
 
-<p>First we require two rack components and use <code class="highlighter-rouge">Rack::Deflater</code>. <code class="highlighter-rouge">Rack::Deflater</code> is used to compress your app so that you can server it up quickly and saving storage space on the server.</p>
+<p>First we require two rack components and use <code>Rack::Deflater</code>. <code>Rack::Deflater</code> is used to compress your app so that you can server it up quickly and saving storage space on the server.</p>
 
-<p>Next we get into the deep stuff. We call <code class="highlighter-rouge">Rack::TryStatic</code> to host our static pages and have a lot of parameters.</p>
+<p>Next we get into the deep stuff. We call <code>Rack::TryStatic</code> to host our static pages and have a lot of parameters.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">:root</code> Set the folder that has all of our static pages.</li>
-  <li><code class="highlighter-rouge">:urls</code> Matches the requests coming to your site.</li>
-  <li><code class="highlighter-rouge">:try</code> This will try all the listed values in order until it gets the right one.</li>
-  <li><code class="highlighter-rouge">:gzip</code> Used by <code class="highlighter-rouge">Rack::Deflater</code> to compress the app.</li>
-  <li><code class="highlighter-rouge">:header_rules</code> Manage our cache and tell <code class="highlighter-rouge">puma</code> how long to hold out compressed files before they have to be regenerated by the server.</li>
+  <li><code>:root</code> Set the folder that has all of our static pages.</li>
+  <li><code>:urls</code> Matches the requests coming to your site.</li>
+  <li><code>:try</code> This will try all the listed values in order until it gets the right one.</li>
+  <li><code>:gzip</code> Used by <code>Rack::Deflater</code> to compress the app.</li>
+  <li><code>:header_rules</code> Manage our cache and tell <code>puma</code> how long to hold out compressed files before they have to be regenerated by the server.</li>
 </ul>
 
 <p>The last bit of code is what happens when there is an incorrect url entered a.k.a 404 NotFound.</p>
 
 <h4 id="push">Push!</h4>
 
-<p>If you made it this far pat yourself on the back you are almost all set! If your git is not set up <code class="highlighter-rouge">git init</code> , <code class="highlighter-rouge">git add .</code>, <code class="highlighter-rouge">git commit -m "Just Heroku blog stuff"</code>. If you skipped bundling your gems earlier do it now <code class="highlighter-rouge">bundle install</code>. If you have a <code class="highlighter-rouge">.gitignore</code> make sure that your <code class="highlighter-rouge">_pages</code> folder is not on it! Github Pages has you ignore the file but we are actually serving the static pages.</p>
+<p>If you made it this far pat yourself on the back you are almost all set! If your git is not set up <code>git init</code> , <code>git add .</code>, <code>git commit -m "Just Heroku blog stuff"</code>. If you skipped bundling your gems earlier do it now <code>bundle install</code>. If you have a <code>.gitignore</code> make sure that your <code>_pages</code> folder is not on it! Github Pages has you ignore the file but we are actually serving the static pages.</p>
 
-<p>The time has come to get this running on heroku. <code class="highlighter-rouge">heroku create</code> in your terminal then <code class="highlighter-rouge">git push heroku master</code>. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then <code class="highlighter-rouge">heroku open</code>. There it is! Your new blog!</p>
+<p>The time has come to get this running on heroku. <code>heroku create</code> in your terminal then <code>git push heroku master</code>. Take a second to appreciate the really cool url Heroku gave you (or lame url) and then <code>heroku open</code>. There it is! Your new blog!</p>
 
   </article>
 </div>

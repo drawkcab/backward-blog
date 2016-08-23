@@ -16,7 +16,7 @@ url: http://backward.herokuapp.com
 #
 timezone:          America/New_York
 markdown:          kramdown
-highlighter:       rouge
+highlighter:       pygments
 excerpt_separator: <!--more-->
 permalink:         /articles/:year-:month/:title
 gems:
