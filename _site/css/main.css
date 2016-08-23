@@ -773,10 +773,10 @@ footer {
   background-color: #42b983; }
 
 .secondary-text-color {
-  color: #59C4C5; }
+  color: #42B983; }
 
 .secondary-bg-color {
-  background-color: #59C4C5; }
+  background-color: #42B983; }
 
 .success-text-color {
   color: #42B983; }
@@ -1046,7 +1046,7 @@ blockquote {
   position: relative;
   padding-left: 20px;
   font-style: italic;
-  border-left: 5px solid #59C4C5; }
+  border-left: 5px solid #42B983; }
 
 a {
   text-decoration: none;
@@ -1475,7 +1475,7 @@ pre code {
     font-size: 2.75em; }
   .cover-card .author_job {
     display: block;
-    color: #59C4C5;
+    color: #42B983;
     font-size: 0.8em;
     font-weight: 700;
     text-transform: uppercase;
@@ -1499,9 +1499,9 @@ pre code {
       display: inline-block;
       margin-left: 1em; }
       .social-links ul li a.social-link-item {
-        color: #59C4C5; }
+        color: #42B983; }
         .social-links ul li a.social-link-item:hover, .social-links ul li a.social-link-item:focus {
-          color: #8ed7d7; }
+          color: #75cea5; }
 
 .nav-list {
   margin: 0;
@@ -1515,9 +1515,9 @@ pre code {
       margin-top: 1em;
       text-transform: lowercase;
       font-size: 85%;
-      color: #59C4C5; }
+      color: #42B983; }
       .nav-list .nav-item a:hover, .nav-list .nav-item a:focus {
-        color: #8ed7d7; }
+        color: #75cea5; }
 
 ul.tag-cloud {
   padding: 2em 0 3em;
@@ -1640,7 +1640,7 @@ section.post {
   font-size: 13px;
   font-weight: bold; }
   .post-meta .post-date {
-    color: #59C4C5; }
+    color: #42B983; }
   .post-meta .post-author {
     text-transform: uppercase;
     color: #F5A623; }
